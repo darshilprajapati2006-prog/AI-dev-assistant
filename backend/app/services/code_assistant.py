@@ -57,6 +57,14 @@ LANG_SIGNATURES: dict[str, list[str]] = {
         r"data\s+class\s+\w+",
         r":\s*\w+\s*\?",
     ],
+    "Go": [
+        r"\bfunc\s+\w+\s*\(",
+        r"\bpackage\s+\w+",
+        r"\bimport\s+\"",
+        r"\bfmt\.Print",
+        r":=\s*",
+        r"\bgoroutine\b|\bgo\s+\w+\s*\(",
+    ],
 }
 
 
@@ -81,6 +89,7 @@ def detect_language(code: str, hint: str | None = None) -> str:
             "cpp": "C++", "c++": "C++", "cxx": "C++",
             "php": "PHP",
             "rust": "Rust", "rs": "Rust",
+            "go": "Go", "golang": "Go",
         }
         if normalized in mapping:
             return mapping[normalized]
